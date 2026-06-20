@@ -1,0 +1,103 @@
+{
+  "theme": "dark",
+  "archetype": 5,
+  "archetype_name": "Luxury & Nostalgia",
+  "typography": {
+    "headings": {
+      "family": "Playfair Display",
+      "weights": [400, 500, 600, 700],
+      "usage": "H1, H2, Gallery Titles"
+    },
+    "body": {
+      "family": "Inter",
+      "weights": [300, 400],
+      "usage": "Subtitles, UI elements, button text"
+    },
+    "script": {
+      "family": "Caveat",
+      "weights": [400, 500, 700],
+      "usage": "Handwritten letter page, signature, polaroid subtitles"
+    }
+  },
+  "color_palette": {
+    "background_primary": "#050914",
+    "background_secondary": "#0A1128",
+    "background_paper": "#FDFBF7",
+    "surface_glass": "rgba(10, 17, 40, 0.4)",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#EAEAEA",
+    "text_paper": "#2A2A2A",
+    "text_muted_paper": "#5A5A5A",
+    "accent_gold": "#D4AF37",
+    "accent_gold_glow": "rgba(212, 175, 55, 0.5)",
+    "border_glass": "rgba(255, 255, 255, 0.1)"
+  },
+  "layout_spacing": {
+    "section_padding": "py-24 md:py-32",
+    "gallery_gap": "gap-8 md:gap-12",
+    "container": "max-w-7xl mx-auto px-6 md:px-12"
+  },
+  "components_instructions": {
+    "global": "Use Framer Motion for scroll animations. Implement react-tsparticles for subtle floating gold particles (like fireflies). Audio player must be a floating button with 'music-toggle-btn' data-testid. DO NOT use plain white backgrounds anywhere except the letter/polaroids.",
+    "page_1_surprise": "Full viewport height. Dark gradient `bg-gradient-to-b from-[#050914] to-[#0A1128]`. Centered emotional content. CTA Button with a soft glowing gold shadow. Button text 'Open My Gift ❤️', `data-testid='open-gift-btn'`.",
+    "page_2_gallery": "Grid layout (cols: 1, md: 2, lg: 3). 6 Photo Cards styled as polaroids. White frame (cream/paper color), image inside, handwritten text below. Use `rotate-1`, `-rotate-2` for organic feel. On click, use `framer-motion` layout animation to expand to ~70% screen width postcard. Backdrop must be heavily blurred (`backdrop-blur-xl bg-black/60`). Close button `data-testid='close-postcard-btn'`.",
+    "page_3_letter": "Simulate a piece of parchment or cream paper in the center. Background behind it remains dark. Paper color `#FDFBF7`. Font `Caveat`. Use `box-shadow` for depth. Emotional letter from Pranjlee to Pappa. Apply subtle paper texture if possible or just soft warm cream color.",
+    "page_4_closing": "Dark background. Huge Playfair Display 'Happy Father's Day, Pappa ❤️'. Use `react-confetti` (subtle configuration, perhaps gold and white colors only) upon reaching this section. Signature 'With Love, Your Daughter Pranjlee' in Caveat font.",
+    "polaroid_cards_data": [
+      { "title": "The Beginning", "message": "The moment you first held me, my safe place forever." },
+      { "title": "My First Hero", "message": "You taught me how to walk, and how to fly." },
+      { "title": "The Teacher", "message": "Patience, love, and endless lessons." },
+      { "title": "Every Sacrifice", "message": "For everything you gave up to see me smile." },
+      { "title": "Every Achievement", "message": "My success is just a reflection of your hard work." },
+      { "title": "Forever Grateful", "message": "No matter how old I get, I'll always be your little girl." }
+    ]
+  },
+  "image_urls": {
+    "gallery": [
+      {
+        "url": "https://images.unsplash.com/photo-1624272864537-8ecc72b67958?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwzfHxmYXRoZXIlMjBhbmQlMjBkYXVnaHRlciUyMGVtb3Rpb25hbHxlbnwwfHx8fDE3ODE5NzE1MTV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "father hugging laughing young daughter",
+        "card_title": "The Beginning"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1482235225574-c37692835cf3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwyfHxmYXRoZXIlMjBhbmQlMjBkYXVnaHRlciUyMGVtb3Rpb25hbHxlbnwwfHx8fDE3ODE5NzE1MTV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "man carrying daughter in black sleeveless top",
+        "card_title": "My First Hero"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1528256507509-cc4facea43f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxmYXRoZXIlMjBhbmQlMjBkYXVnaHRlciUyMGVtb3Rpb25hbHxlbnwwfHx8fDE3ODE5NzE1MTV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "silhouette of man throwing girl in air",
+        "card_title": "The Teacher"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1542103627-154a9565ae45?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHw0fHxmYXRoZXIlMjBhbmQlMjBkYXVnaHRlciUyMGVtb3Rpb25hbHxlbnwwfHx8fDE3ODE5NzE1MTV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "boy kissing her daughter",
+        "card_title": "Every Sacrifice"
+      },
+      {
+        "url": "https://images.pexels.com/photos/6209749/pexels-photo-6209749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Emotional wedding moment capturing a father-daughter embrace",
+        "card_title": "Every Achievement"
+      },
+      {
+        "url": "https://images.pexels.com/photos/35007885/pexels-photo-35007885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "A heartfelt moment between a bride and her father",
+        "card_title": "Forever Grateful"
+      }
+    ]
+  },
+  "libraries_to_install": [
+    "framer-motion",
+    "react-tsparticles",
+    "tsparticles",
+    "react-confetti"
+  ],
+  "accessibility_and_testing": {
+    "required_test_ids": [
+      "open-gift-btn",
+      "music-toggle-btn",
+      "polaroid-card",
+      "close-postcard-btn"
+    ]
+  }
+}
