@@ -2,7 +2,7 @@
   "version": 2,
   "buildCommand": "cd frontend && npm ci && npm run build",
   "outputDirectory": "frontend/build",
-  "framework": "react",
+  "framework": "create-react-app",
   "regions": ["iad1"],
   "env": {
     "REACT_APP_API_URL": "@react_app_api_url",
