@@ -1,0 +1,10 @@
+# Vercel Configuration for Python Backend
+# Place this in your backend root if needed
+
+[build]
+builder = "static"
+src = "frontend"
+distDir = "frontend/build"
+
+[env]
+NODE_ENV = "production"

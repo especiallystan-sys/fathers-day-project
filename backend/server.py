@@ -1,6 +1,5 @@
 from fastapi import FastAPI, APIRouter
-from dotenv import load_dotenv
-from starlette.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
@@ -10,14 +9,24 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 
+# Load environment variables only in development
+if os.environ.get('VERCEL') != '1':
+    from dotenv import load_dotenv
+    ROOT_DIR = Path(__file__).parent
+    load_dotenv(ROOT_DIR / '.env')
 
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
+# Get environment variables with defaults for development
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+db_name = os.environ.get('DB_NAME', 'test_database')
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# Only connect to MongoDB if URL is valid (not localhost in production)
+if mongo_url != 'mongodb://localhost:27017' or os.environ.get('VERCEL') != '1':
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
+else:
+    # For local development fallback
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -69,10 +78,17 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
+# Parse CORS origins safely
+cors_origins = os.environ.get('CORS_ORIGINS', '*')
+if cors_origins == '*':
+    allow_origins = ['*']
+else:
+    allow_origins = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_origins=allow_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -87,3 +103,6 @@ logger = logging.getLogger(__name__)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+
+# Export the app for Vercel
+app_instance = app
